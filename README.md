@@ -136,41 +136,6 @@ Content-Type: application/json
 
 ---
 
-## 🖼️ Screenshots
-
-### Home Page
-![Home Page](https://github.com/<your_username>/<your_repo_name>/blob/main/assets/project1.png?raw=true)
-
-### Registration Page
-![Registration Page](https://github.com/<your_username>/<your_repo_name>/blob/main/assets/project2.png?raw=true)
-
-### Successful Registration
-![Successful Registration](https://github.com/<your_username>/<your_repo_name>/blob/main/assets/project3.png?raw=true)
-
-### Login Page
-![Login Page](https://github.com/<your_username>/<your_repo_name>/blob/main/assets/project4.png?raw=true)
-
-### Google Authentication
-![Google Auth](https://github.com/<your_username>/<your_repo_name>/blob/main/assets/project5.png?raw=true)
-
-### Uploading Documents
-![Upload Page](https://github.com/<your_username>/<your_repo_name>/blob/main/assets/project6.png?raw=true)
-
-### Chatbot Interface
-![Chatbot Page 1](https://github.com/<your_username>/<your_repo_name>/blob/main/assets/project7.png?raw=true)
-![Chatbot Page 2](https://github.com/<your_username>/<your_repo_name>/blob/main/assets/project8.png?raw=true)
-![Chatbot Page 3](https://github.com/<your_username>/<your_repo_name>/blob/main/assets/project9.png?raw=true)
-![Chatbot Page 4](https://github.com/<your_username>/<your_repo_name>/blob/main/assets/project10.png?raw=true)
-![Chatbot Page 5](https://github.com/<your_username>/<your_repo_name>/blob/main/assets/project11.png?raw=true)
-
-### MongoDB Storage
-![MongoDB View](https://github.com/<your_username>/<your_repo_name>/blob/main/assets/project12.png?raw=true)
-
-### Full System Architecture Graph
-![Architecture Graph](https://github.com/<your_username>/<your_repo_name>/blob/main/assets/architecture_graph.png?raw=true)
-
----
-
 ## 🚀 Getting Started
 
 ### Prerequisites
