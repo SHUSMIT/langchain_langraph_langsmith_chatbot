@@ -21,7 +21,7 @@ The pipeline performs:
 
 - 🔐 **User Authentication** (JWT-based)
 - 🔑 **Google OAuth Login**
-- 📁 **Isolated User Folders** — each user’s documents are stored independently
+- 📁 **Isolated User Folders** — each user's documents are stored independently
 - 📄 **Automatic Resume Parsing + Semantic Understanding**
 - 🧠 **RAG Q&A** — contextual question-answering over user documents
 - 💬 **Chat Session Persistence** (MongoDB)
@@ -36,14 +36,19 @@ The pipeline performs:
 
 ```mermaid
 graph TD
-A[User Uploads PDF/Resume] --> B[FastAPI Backend]
-B --> C[DeepSeek OCR - Text Extraction]
-C --> D[Jina Embeddings - Vector Generation]
-D --> E[ChromaDB - Vector Store]
-E --> F[LangGraph + LangChain Retrieval]
-F --> G[Groq AI LLM - Contextual Answer Generation]
-G --> H[Response to User]
-B --> I[LangSmith - Logging & Trace Visualization]
+    A[User Uploads PDF/Resume] --> B[FastAPI Backend]
+    B --> C[DeepSeek OCR - Text Extraction]
+    C --> D[Jina Embeddings - Vector Generation]
+    D --> E[ChromaDB - Vector Store]
+    E --> F[LangGraph + LangChain Retrieval]
+    F --> G[Groq AI LLM - Contextual Answer Generation]
+    G --> H[Response to User]
+    B --> I[LangSmith - Logging & Trace Visualization]
+```
+
+---
+
+## 🛠️ Tech Stack
 
 | Layer                    | Tools                         |
 | ------------------------ | ----------------------------- |
@@ -58,6 +63,11 @@ B --> I[LangSmith - Logging & Trace Visualization]
 | **Frontend (optional)**  | React                         |
 | **Deployment**           | Uvicorn / Gunicorn            |
 
+---
+
+## 📂 Project Structure
+
+```
 project/
 │
 ├── backend/
@@ -65,14 +75,14 @@ project/
 │   ├── routes/
 │   │   ├── auth.py           # JWT + Google OAuth
 │   │   ├── upload.py         # File uploads
-│   │   ├── chat.py           # Q&A endpoints
+│   │   └── chat.py           # Q&A endpoints
 │   ├── core/
 │   │   ├── langgraph_chain.py # LangGraph + LangChain orchestration
 │   │   ├── embeddings.py      # Jina embeddings + Chroma integration
-│   │   ├── resume_parser.py   # DeepSeek OCR for parsing resumes
-│   ├── utils/
-│   │   ├── logger.py          # LangSmith trace + logging integration
-│   │   ├── db.py              # MongoDB + Chroma connections
+│   │   └── resume_parser.py   # DeepSeek OCR for parsing resumes
+│   └── utils/
+│       ├── logger.py          # LangSmith trace + logging integration
+│       └── db.py              # MongoDB + Chroma connections
 │
 ├── frontend/ (optional)
 │   ├── src/
@@ -85,6 +95,11 @@ project/
 ├── .env
 ├── requirements.txt
 └── README.md
+```
+
+---
+
+## 🌐 API Endpoints
 
 | Endpoint             | Method | Description                      |
 | -------------------- | ------ | -------------------------------- |
@@ -92,20 +107,34 @@ project/
 | `/api/login`         | POST   | Login via email/password         |
 | `/login/google`      | GET    | Google OAuth Login               |
 | `/upload/{username}` | POST   | Upload PDF or Resume             |
-| `/ask/{username}`    | POST   | Ask a question about user’s docs |
+| `/ask/{username}`    | POST   | Ask a question about user's docs |
 | `/debug_chroma`      | GET    | Inspect vector database          |
 | `/api/sessions`      | GET    | Retrieve chat session history    |
 
+---
+
+## 📝 Example Usage
+
+### Request
+```bash
 POST /ask/shusmit
+Content-Type: application/json
+
 {
   "question": "Summarize candidate skills from the uploaded resume."
 }
+```
 
+### Response
+```json
 {
   "answer": "The candidate demonstrates strong proficiency in Python, SQL, and data analysis, with experience in FastAPI and LangChain-based systems.",
   "context": ["... relevant text snippets from the resume ..."],
   "session_id": "674ad0b21a..."
 }
+```
+
+---
 
 ## 🖼️ Screenshots
 
@@ -127,7 +156,7 @@ POST /ask/shusmit
 ### Uploading Documents
 ![Upload Page](https://github.com/<your_username>/<your_repo_name>/blob/main/assets/project6.png?raw=true)
 
-### Chatbot Home
+### Chatbot Interface
 ![Chatbot Page 1](https://github.com/<your_username>/<your_repo_name>/blob/main/assets/project7.png?raw=true)
 ![Chatbot Page 2](https://github.com/<your_username>/<your_repo_name>/blob/main/assets/project8.png?raw=true)
 ![Chatbot Page 3](https://github.com/<your_username>/<your_repo_name>/blob/main/assets/project9.png?raw=true)
@@ -137,11 +166,87 @@ POST /ask/shusmit
 ### MongoDB Storage
 ![MongoDB View](https://github.com/<your_username>/<your_repo_name>/blob/main/assets/project12.png?raw=true)
 
-### Full System Architecture Graph (Mermaid)
+### Full System Architecture Graph
 ![Architecture Graph](https://github.com/<your_username>/<your_repo_name>/blob/main/assets/architecture_graph.png?raw=true)
 
+---
 
-❤️ Credits
+## 🚀 Getting Started
 
-Developed by Shusmit Sarkar
-Built using LangGraph, LangChain, LangSmith, FastAPI, ChromaDB, Jina, Groq AI, and DeepSeek OCR.
+### Prerequisites
+- Python 3.9+
+- MongoDB
+- API keys for:
+  - Groq AI
+  - Jina Embeddings
+  - DeepSeek OCR
+  - Google OAuth (optional)
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/<your_username>/<your_repo_name>.git
+cd <your_repo_name>
+```
+
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+3. Set up environment variables in `.env`:
+```env
+GROQ_API_KEY=your_groq_key
+JINA_API_KEY=your_jina_key
+DEEPSEEK_API_KEY=your_deepseek_key
+MONGODB_URI=your_mongodb_connection_string
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+SECRET_KEY=your_jwt_secret
+```
+
+4. Run the application:
+```bash
+uvicorn backend.main:app --reload
+```
+
+5. Access the API at `http://localhost:8000`
+
+---
+
+## 📚 Documentation
+
+For detailed API documentation, visit `/docs` (Swagger UI) or `/redoc` (ReDoc) after starting the server.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+---
+
+## ❤️ Credits
+
+**Developed by Shusmit Sarkar**
+
+Built using:
+- [LangGraph](https://github.com/langchain-ai/langgraph)
+- [LangChain](https://github.com/langchain-ai/langchain)
+- [LangSmith](https://smith.langchain.com/)
+- [FastAPI](https://fastapi.tiangolo.com/)
+- [ChromaDB](https://www.trychroma.com/)
+- [Jina Embeddings](https://jina.ai/)
+- [Groq AI](https://groq.com/)
+- [DeepSeek OCR](https://deepseek.com/)
+
+---
+
+**⭐ If you find this project useful, please consider giving it a star!**
